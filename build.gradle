@@ -26,9 +26,9 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-micrometer-metrics'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-	runtimeOnly 'io.micrometer:micrometer-registry-datadog'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-micrometer-metrics-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-restdocs'
