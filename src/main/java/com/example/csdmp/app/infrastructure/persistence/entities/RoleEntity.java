@@ -24,7 +24,6 @@ public class RoleEntity {
     public RoleEntity(UUID id, String name, String description) {
         this.id = id;
         this.name = name;
-        this.name = name;
         this.description = description;
     }
 
