@@ -1,4 +1,4 @@
-package com.example.csdmp.app.interfaces.rest.dto;
+package com.example.csdmp.app.interfaces.rest.dtos;
 
 import java.util.UUID;
 

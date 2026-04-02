@@ -2,8 +2,8 @@ package com.example.csdmp.app.interfaces.rest.controllers;
 
 import com.example.csdmp.app.domain.entities.Role;
 import com.example.csdmp.app.domain.services.RoleService;
-import com.example.csdmp.app.interfaces.rest.dto.RoleRequest;
-import com.example.csdmp.app.interfaces.rest.dto.RoleResponse;
+import com.example.csdmp.app.interfaces.rest.dtos.RoleRequest;
+import com.example.csdmp.app.interfaces.rest.dtos.RoleResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
