@@ -2,7 +2,6 @@ package com.example.csdmp.app.infrastructure.persistence.repositories;
 
 import com.example.csdmp.app.domain.entities.Role;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
-import com.example.csdmp.app.infrastructure.persistence.entities.RoleEntity;
 import com.example.csdmp.app.infrastructure.persistence.mappers.RoleMapper;
 import org.springframework.stereotype.Component;
 
