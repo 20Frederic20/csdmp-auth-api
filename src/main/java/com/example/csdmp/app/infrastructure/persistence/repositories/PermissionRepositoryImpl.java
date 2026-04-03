@@ -1,8 +1,12 @@
 package com.example.csdmp.app.infrastructure.persistence.repositories;
 
+import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
+import com.example.csdmp.app.infrastructure.persistence.entities.PermissionEntity;
 import com.example.csdmp.app.infrastructure.persistence.mappers.PermissionMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,8 +37,19 @@ public class PermissionRepositoryImpl implements PermissionRepository {
     }
 
     @Override
-    public List<Permission> findAll(){
-        return jpaPermissionRepository.findAll().stream().map(PermissionMapper::toDomain).toList();
+    public PaginatedResult<Permission> findAll(int page, int size) {
+        Page<PermissionEntity> entityPage = jpaPermissionRepository.findAll(PageRequest.of(page, size));
+
+        List<Permission> domainList = entityPage.getContent().stream()
+                .map(PermissionMapper::toDomain)
+                .toList();
+
+        return new PaginatedResult<>(
+                domainList,
+                entityPage.getTotalElements(),
+                entityPage.getTotalPages(),
+                entityPage.getNumber()
+        );
     }
 
     @Override
