@@ -1,5 +1,6 @@
 package com.example.csdmp.app.domain.services;
 
+import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 
@@ -22,8 +23,8 @@ public class PermissionService {
         return permission;
     }
 
-    public List<Permission> getAll() {
-        return permissionRepository.findAll();
+    public PaginatedResult<Permission> getAll(int page, int size) {
+        return permissionRepository.findAll(page, size);
     }
 
     public Permission update(UUID id, String newResource, String newAction, String newDescription) {
