@@ -1,5 +1,6 @@
 package com.example.csdmp.app.interfaces.rest.controllers;
 
+import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.services.PermissionService;
 import com.example.csdmp.app.interfaces.rest.dtos.PermissionRequest;
@@ -22,19 +23,24 @@ public class PermissionController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<PermissionResponse>> all() {
-        List<Permission> permissions = permissionService.getAll();
+    public ResponseEntity<PaginatedResult<PermissionResponse>> all(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        PaginatedResult<Permission> result = permissionService.getAll(page, size);
 
-        List<PermissionResponse> response = permissions.stream()
-                .map(permission -> new PermissionResponse(
-                        permission.getId(),
-                        permission.getResource(),
-                        permission.getAction(),
-                        permission.getDescription()
-                ))
+        // On mappe les entités de domaine vers les DTOs de réponse
+        List<PermissionResponse> dtos = result.data().stream()
+                .map(p -> new PermissionResponse(p.getId(), p.getResource(), p.getAction(), p.getDescription()))
                 .toList();
 
-        return ResponseEntity.ok(response);
+        // On renvoie l'objet paginé complet
+        return ResponseEntity.ok(new PaginatedResult<>(
+                dtos,
+                result.totalElements(),
+                result.totalPages(),
+                result.currentPage()
+        ));
     }
 
     @PostMapping()
