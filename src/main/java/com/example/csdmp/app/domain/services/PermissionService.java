@@ -14,7 +14,7 @@ public class PermissionService {
     }
 
     public Permission create(String resource, String action, String description) {
-        if (permissionRepository.findBySlug(resource, action).isPresent()) {
+        if (permissionRepository.findByResourceAndAction(resource, action).isPresent()) {
             throw new RuntimeException("La permission existe déjà");
         }
         Permission permission = new Permission(UUID.randomUUID(), resource, action, description);

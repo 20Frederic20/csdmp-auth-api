@@ -28,8 +28,8 @@ public class PermissionRepositoryImpl implements PermissionRepository {
     }
 
     @Override
-    public Optional<Permission> findBySlug(String resource, String action) {
-        return jpaPermissionRepository.findBySlug(resource, action).map(PermissionMapper::toDomain);
+    public Optional<Permission> findByResourceAndAction(String resource, String action) {
+        return jpaPermissionRepository.findByResourceAndAction(resource, action).map(PermissionMapper::toDomain);
     }
 
     @Override

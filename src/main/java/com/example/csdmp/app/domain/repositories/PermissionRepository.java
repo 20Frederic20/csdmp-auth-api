@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface PermissionRepository {
     void save(Permission permission);
     Optional<Permission> findById(UUID id);
-    Optional<Permission> findBySlug(String resource, String action);
+    Optional<Permission> findByResourceAndAction(String resource, String action);
     List<Permission> findAll();
     void delete(UUID id);
 }

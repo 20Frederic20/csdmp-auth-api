@@ -30,9 +30,5 @@ public class Permission {
     public String getDescription() {
         return description;
     }
-
-    public String getSlug() {
-        return resource + ":" + action;
-    }
 }
 
