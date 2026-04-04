@@ -1,7 +1,10 @@
 package com.example.csdmp.app.infrastructure.persistence.mappers;
 
+import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.entities.Role;
 import com.example.csdmp.app.infrastructure.persistence.entities.RoleEntity;
+
+import java.util.List;
 
 public class RoleMapper {
     public static RoleEntity toEntity(Role domain) {
@@ -9,6 +12,9 @@ public class RoleMapper {
     }
 
     public static Role toDomain(RoleEntity entity) {
-        return new Role(entity.getId(), entity.getName(), entity.getDescription());
+        List<Permission> domainPermissions = entity.getPermissions().stream()
+                .map(PermissionMapper::toDomain)
+                .toList();
+        return new Role(entity.getId(), entity.getName(), entity.getDescription(), domainPermissions);
     }
 }
