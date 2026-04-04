@@ -1,9 +1,8 @@
 package com.example.csdmp.app.infrastructure.persistence.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,6 +20,14 @@ public class RoleEntity {
 
     public RoleEntity() {}
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "role_permissions",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    private List<PermissionEntity> permissions;
+
     public RoleEntity(UUID id, String name, String description) {
         this.id = id;
         this.name = name;
@@ -34,4 +41,12 @@ public class RoleEntity {
     public void setName(String name) { this.name = name; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    public List<PermissionEntity> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<PermissionEntity> permissions) {
+        this.permissions = permissions;
+    }
 }
