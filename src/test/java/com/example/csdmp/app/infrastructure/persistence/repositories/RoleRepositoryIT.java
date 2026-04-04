@@ -14,8 +14,8 @@
 
     import static org.assertj.core.api.Assertions.assertThat;
 
-    @DataJpaTest // Charge uniquement la couche JPA (EntityManager, Repositories)
-    @Import({RoleRepositoryImpl.class, PermissionRepositoryImpl.class}) // On importe nos implémentations réelles
+    @DataJpaTest
+    @Import({RoleRepositoryImpl.class, PermissionRepositoryImpl.class})
     class RoleRepositoryIT {
 
         @Autowired
