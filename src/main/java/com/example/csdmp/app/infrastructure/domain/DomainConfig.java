@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DomainConfig {
     @Bean
-    public RoleService roleService(RoleRepository roleRepository) {
-        return new RoleService(roleRepository);
+    public RoleService roleService(RoleRepository roleRepository, PermissionRepository permissionRepository) {
+        return new RoleService(roleRepository, permissionRepository);
     }
 
     @Bean
