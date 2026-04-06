@@ -2,6 +2,8 @@ package com.example.csdmp.app.domain.services;
 
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.entities.Role;
+import com.example.csdmp.app.domain.exceptions.BusinessException;
+import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
 
@@ -22,10 +24,10 @@ public class RoleService {
 
     public Role create(String name, String description, List<UUID> permissionIds) {
         if (roleRepository.findByName(name).isPresent()) {
-            throw new RuntimeException("Le rôle existe déjà");
+            throw new BusinessException("Le rôle existe déjà");
         }
         List<Permission> permissions = permissionIds.stream()
-                .map(pId -> permissionRepository.findById(pId).orElseThrow())
+                .map(pId -> permissionRepository.findById(pId).orElseThrow(() -> new EntityNotFoundException("La permission " + pId + " n'existe pas")))
                 .toList();
         Role role = new Role(UUID.randomUUID(), name, description, permissions);
         roleRepository.save(role);
@@ -38,7 +40,7 @@ public class RoleService {
 
     public Role update(UUID id, String newName, String newDescription, List<UUID> newPermissionIds) {
         Role existingRole = roleRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Rôle non trouvé avec l'ID : " + id)
+                () -> new EntityNotFoundException("Rôle non trouvé avec l'ID : " + id)
         );
         List<Permission> newPermissions = newPermissionIds.stream()
                 .map(pId -> permissionRepository.findById(pId).orElseThrow())
@@ -51,7 +53,7 @@ public class RoleService {
 
     public void delete(UUID id) {
         if (roleRepository.findById(id).isEmpty()) {
-            throw new RuntimeException("Impossible de supprimer : le rôle n'existe pas.");
+            throw new BusinessException("Impossible de supprimer : le rôle n'existe pas.");
         }
         roleRepository.delete(id);
     }
