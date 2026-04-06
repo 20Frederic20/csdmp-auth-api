@@ -2,6 +2,8 @@ package com.example.csdmp.app.interfaces.rest.controllers;
 
 import com.example.csdmp.app.domain.entities.Role;
 import com.example.csdmp.app.domain.services.RoleService;
+import com.example.csdmp.app.interfaces.rest.docs.ApiMutationErrors;
+import com.example.csdmp.app.interfaces.rest.docs.ApiQueryErrors;
 import com.example.csdmp.app.interfaces.rest.dtos.PermissionResponse;
 import com.example.csdmp.app.interfaces.rest.dtos.RoleRequest;
 import com.example.csdmp.app.interfaces.rest.dtos.RoleResponse;
@@ -11,7 +13,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +27,8 @@ public class RoleController {
         this.roleService = roleService;
     }
 
+    @ApiResponse(responseCode = "200", description = "Liste des rôles")
+    @ApiQueryErrors
     @GetMapping()
     public ResponseEntity<List<RoleResponse>> all() {
         List<Role> roles = roleService.getAll();
@@ -46,7 +49,7 @@ public class RoleController {
 
     @Operation(summary = "Créer un nouveau rôle", description = "Permet d'associer un nom à une liste de permissions")
     @ApiResponse(responseCode = "201", description = "Rôle créé avec succès")
-    @ApiResponse(responseCode = "400", description = "Données invalides ou rôle déjà existant")
+    @ApiMutationErrors
     @PostMapping()
     public ResponseEntity<RoleResponse> create(@RequestBody RoleRequest request) {
         Role created = roleService.create(request.name(), request.description(), request.permissionIds());
