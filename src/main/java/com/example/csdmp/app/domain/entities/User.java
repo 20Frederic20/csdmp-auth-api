@@ -11,7 +11,7 @@ public class User extends BaseDomainEntity {
     private final String healthId;
     private final String password;
 
-    public User(UUID id, String firstName, String lastName, String email, String healthId, String password, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, boolean isActive) {
+    public User(UUID id, String firstName, String lastName, String email, String healthId, String password, boolean isActive, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt) {
         super(isActive, createdAt, updatedAt, deletedAt);
         this.id=id;
         this.email=email;
