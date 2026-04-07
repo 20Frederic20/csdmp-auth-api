@@ -3,7 +3,7 @@ package com.example.csdmp.app.domain.entities;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class User extends BaseEntity {
+public class User extends BaseDomainEntity {
     private final UUID id;
     private final String firstName;
     private final String lastName;
