@@ -2,9 +2,10 @@ package com.example.csdmp.app.domain.services;
 
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.entities.Role;
+import com.example.csdmp.app.domain.exceptions.BusinessException;
+import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
-import com.example.csdmp.app.domain.services.RoleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -73,7 +74,7 @@ class RoleServiceTest {
 
         // Act & Assert
         assertThatThrownBy(() -> roleService.create(name, "desc", List.of()))
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(BusinessException.class)
                 .hasMessage("Le rôle existe déjà");
 
         // On vérifie que save n'a jamais été appelé car l'exception a coupé le flux
@@ -90,6 +91,7 @@ class RoleServiceTest {
 
         // Act & Assert
         assertThatThrownBy(() -> roleService.create(name, "desc", List.of(fakeId)))
-                .isInstanceOf(java.util.NoSuchElementException.class);
+                .isInstanceOf(EntityNotFoundException.class)
+                .hasMessageContaining("n'existe pas");
     }
 }
