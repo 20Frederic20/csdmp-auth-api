@@ -2,6 +2,8 @@ package com.example.csdmp.app.interfaces.rest.exceptions;
 
 import com.example.csdmp.app.domain.exceptions.BusinessException;
 import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
+import com.example.csdmp.app.domain.exceptions.UnauthorizedException;
+import com.example.csdmp.app.domain.exceptions.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -34,28 +36,20 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ErrorResponse> handleRuntimeException(RuntimeException ex) {
-        ErrorResponse error = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                ex.getMessage(),
-                LocalDateTime.now()
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {
+        return new ResponseEntity<>(
+                new ErrorResponse(HttpStatus.UNPROCESSABLE_CONTENT.value(), ex.getMessage(), LocalDateTime.now()),
+                HttpStatus.UNPROCESSABLE_CONTENT
         );
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        String errors = ex.getBindingResult().getFieldErrors().stream()
-                .map(error -> error.getField() + ": " + error.getDefaultMessage())
-                .collect(Collectors.joining(", "));
-
-        ErrorResponse error = new ErrorResponse(
-                HttpStatus.UNPROCESSABLE_CONTENT.value(),
-                "Validation échouée: " + errors,
-                LocalDateTime.now()
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<ErrorResponse> handleUnauthorized(UnauthorizedException ex) {
+        return new ResponseEntity<>(
+                new ErrorResponse(HttpStatus.FORBIDDEN.value(), ex.getMessage(), LocalDateTime.now()),
+                HttpStatus.FORBIDDEN
         );
-        return new ResponseEntity<>(error, HttpStatus.UNPROCESSABLE_CONTENT);
     }
 
     @ExceptionHandler(Exception.class)
