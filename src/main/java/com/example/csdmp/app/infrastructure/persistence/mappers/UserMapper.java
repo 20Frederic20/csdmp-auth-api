@@ -2,17 +2,18 @@ package com.example.csdmp.app.infrastructure.persistence.mappers;
 
 import com.example.csdmp.app.domain.entities.User;
 import com.example.csdmp.app.infrastructure.persistence.entities.UserEntity;
+import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
 
-    private final RoleMapper roleMapper;
+    private final UserMapper userMapper;
 
-    public UserMapper(RoleMapper roleMapper) {
-        this.roleMapper = roleMapper;
+    public UserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
-    public User toDomain(UserEntity entity) {
+    public static User toDomain(UserEntity entity) {
         if (entity == null) return null;
 
         return new User(
@@ -29,10 +30,10 @@ public class UserMapper {
         );
     }
 
-    public UserEntity toEntity(User domain) {
+    public static UserEntity toEntity(User domain) {
         if (domain == null) return null;
 
-        UserEntity entity = new UserEntity(
+        return new UserEntity(
                 domain.getId(),
                 domain.getFirstName(),
                 domain.getLastName(),
@@ -41,8 +42,5 @@ public class UserMapper {
                 domain.getHealthId(),
                 domain.isActive() // On passe l'état actif au constructeur
         );
-
-        // On ne s'occupe pas de createdAt/updatedAt ici, JPA gère !
-        return entity;
     }
 }
