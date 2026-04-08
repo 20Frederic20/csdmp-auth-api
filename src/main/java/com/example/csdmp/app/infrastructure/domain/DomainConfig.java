@@ -3,6 +3,7 @@ package com.example.csdmp.app.infrastructure.domain;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
 import com.example.csdmp.app.domain.repositories.UserRepository;
+import com.example.csdmp.app.domain.security.PasswordInterface;
 import com.example.csdmp.app.domain.services.PermissionService;
 import com.example.csdmp.app.domain.services.RoleService;
 import com.example.csdmp.app.domain.services.UserService;
@@ -35,7 +36,7 @@ public class DomainConfig {
     }
 
     @Bean
-    public UserService userService(UserRepository userRepository, RoleRepository roleRepository) {
-        return new UserService(userRepository, roleRepository);
+    public UserService userService(UserRepository userRepository, RoleRepository roleRepository, PasswordInterface passwordInterface) {
+        return new UserService(userRepository, roleRepository, passwordInterface);
     }
 }
