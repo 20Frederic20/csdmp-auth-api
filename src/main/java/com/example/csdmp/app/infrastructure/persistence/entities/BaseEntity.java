@@ -19,7 +19,7 @@ public abstract class BaseEntity {
     private LocalDateTime deletedAt;
 
     @Column(name = "is_active", nullable = false)
-    private boolean active = true;
+    private boolean isActive = true;
 
     /**
      * S'exécute automatiquement avant l'insertion en base (INSERT)
@@ -65,12 +65,12 @@ public abstract class BaseEntity {
         this.deletedAt = deletedAt;
     }
 
-    public boolean isActive() {
-        return active;
+    public boolean getIsActive() {
+        return isActive;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setIsActive(boolean active) {
+        this.isActive = active;
     }
 
     /**

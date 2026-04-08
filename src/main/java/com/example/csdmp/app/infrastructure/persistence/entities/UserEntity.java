@@ -58,7 +58,7 @@ public class UserEntity extends BaseEntity {
         this.lastName=lastName;
         this.password=password;
         this.healthId=healthId;
-        this.setActive(active);
+        this.setIsActive(active);
     }
 
     // --- Getters et Setters ---
