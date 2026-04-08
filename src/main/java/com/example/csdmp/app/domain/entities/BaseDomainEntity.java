@@ -21,10 +21,9 @@ public abstract class BaseDomainEntity {
 
     // Getters
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
-
     public LocalDateTime getCreatedAt() { return createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public LocalDateTime getDeletedAt() { return deletedAt; }
