@@ -61,6 +61,8 @@ public class UserEntity extends BaseEntity {
         this.setIsActive(active);
     }
 
+    public UserEntity(){}
+
     // --- Getters et Setters ---
 
     public UUID getId() { return id; }
