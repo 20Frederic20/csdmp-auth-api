@@ -7,11 +7,13 @@ import com.example.csdmp.app.infrastructure.persistence.entities.UserEntity;
 import com.example.csdmp.app.infrastructure.persistence.mappers.UserMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Component
 public class UserRepositoryImpl implements UserRepository {
     private final JpaUserRepository jpaRepository;
 

@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
 
-    private final UserMapper userMapper;
-
-    public UserMapper(UserMapper userMapper) {
-        this.userMapper = userMapper;
+    public UserMapper() {
     }
 
     public static User toDomain(UserEntity entity) {
@@ -23,7 +20,7 @@ public class UserMapper {
                 entity.getEmail(),
                 entity.getHealthId(),
                 entity.getPassword(),
-                entity.isActive(),
+                entity.getIsActive(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt(),
                 entity.getDeletedAt()
@@ -40,7 +37,7 @@ public class UserMapper {
                 domain.getEmail(),
                 domain.getPassword(),
                 domain.getHealthId(),
-                domain.isActive() // On passe l'état actif au constructeur
+                domain.getIsActive() // On passe l'état actif au constructeur
         );
     }
 }
