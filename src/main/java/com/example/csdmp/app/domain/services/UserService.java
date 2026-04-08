@@ -1,27 +1,30 @@
 package com.example.csdmp.app.domain.services;
 
 import com.example.csdmp.app.domain.dtos.PaginatedResult;
-import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.entities.User;
 import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
 import com.example.csdmp.app.domain.repositories.UserRepository;
+import com.example.csdmp.app.domain.security.PasswordInterface;
 
 import java.util.UUID;
 
 public class UserService {
     public final UserRepository userRepository;
     public final RoleRepository roleRepository;
+    private final PasswordInterface passwordInterface;
 
     public UserService(
-            UserRepository userRepository, RoleRepository roleRepository
+            UserRepository userRepository, RoleRepository roleRepository, PasswordInterface passwordInterface
     ) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.passwordInterface = passwordInterface;
     }
 
     public User create(String firstName, String lastName, String email, String healthId, String password, boolean isActive){
-        User user = new User(UUID.randomUUID(), firstName, lastName, email, healthId, password, isActive);
+        String hashedPassword = passwordInterface.hash(password);
+        User user = new User(UUID.randomUUID(), firstName, lastName, email, healthId, hashedPassword, isActive);
         userRepository.save(user);
         return user;
     }
