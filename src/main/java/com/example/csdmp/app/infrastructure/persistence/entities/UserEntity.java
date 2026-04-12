@@ -30,10 +30,10 @@ public class UserEntity extends BaseEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String email;
 
-    @Column(name = "health_id", unique = true)
+    @Column(name = "health_id", unique = true, nullable = false)
     private String healthId;
 
     @Column(nullable = false)
@@ -51,6 +51,8 @@ public class UserEntity extends BaseEntity {
     )
     private List<RoleEntity> roles = new ArrayList<>();
 
+    public UserEntity(){}
+
     public UserEntity(UUID id, String firstName, String lastName, String email, String password, String healthId, boolean active) {
         this.email=email;
         this.id=id;
@@ -60,9 +62,6 @@ public class UserEntity extends BaseEntity {
         this.healthId=healthId;
         this.setIsActive(active);
     }
-
-    public UserEntity(){}
-
     // --- Getters et Setters ---
 
     public UUID getId() { return id; }
