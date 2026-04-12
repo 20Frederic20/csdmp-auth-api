@@ -68,11 +68,9 @@ class RoleServiceTest {
 
     @Test
     void should_throw_exception_when_role_name_already_exists() {
-        // Arrange
         String name = "ADMIN";
         when(roleRepository.findByName(name)).thenReturn(Optional.of(new Role(UUID.randomUUID(), name, "desc", List.of())));
 
-        // Act & Assert
         assertThatThrownBy(() -> roleService.create(name, "desc", List.of()))
                 .isInstanceOf(BusinessException.class)
                 .hasMessage("Le rôle existe déjà");
