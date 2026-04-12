@@ -24,7 +24,7 @@ public class UserController {
     @ApiMutationErrors
     @PostMapping()
     public ResponseEntity<UserResponse> create(@RequestBody UserRequest request) {
-        User created = userService.create(request.firstName(), request.lastName(), request.email(), request.healthId(), request.password(), request.isActive());
+        User created = userService.create(request.firstName(), request.lastName(), request.email(), request.healthId(), request.password(), request.roleIds(), request.isActive());
         return ResponseEntity.ok(new UserResponse(created.getId(), created.getFirstName(), created.getLastName(), created.getEmail(), created.getHealthId(), created.getPassword(), created.getIsActive(), created.getCreatedAt(), created.getUpdatedAt(), created.getDeletedAt()));
     }
 }
