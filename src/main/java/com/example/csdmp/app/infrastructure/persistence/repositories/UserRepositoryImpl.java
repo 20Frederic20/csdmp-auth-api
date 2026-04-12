@@ -27,8 +27,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
-        return jpaRepository.findByEmail(email).map(UserMapper::toDomain);
+    public Optional<User> findByEmail(String email, boolean includeDeleted) {
+        if (includeDeleted) {
+            return jpaRepository.findByEmailIncludeDeleted(email).map(UserMapper::toDomain);
+        }
+        return jpaRepository.findByEmail(email, false).map(UserMapper::toDomain);
     }
 
     @Override
@@ -38,6 +41,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findById(UUID id) {
+
         return jpaRepository.findById(id).map(UserMapper::toDomain);
     }
 
