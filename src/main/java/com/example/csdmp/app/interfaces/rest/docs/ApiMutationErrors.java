@@ -16,9 +16,13 @@ import java.lang.annotation.Target;
 @ApiResponses({
         @ApiResponse(responseCode = "400", description = "Erreur métier (ex: email déjà pris)",
                 content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-        @ApiResponse(responseCode = "422", description = "Données invalides (ex: format email incorrect)",
+        @ApiResponse(responseCode = "401", description = "Vous n'êtes pas connecté",
+                content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+        @ApiResponse(responseCode = "403", description = "Vous n'avez pas assez de permissions pour y avoir accès",
                 content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
         @ApiResponse(responseCode = "404", description = "Une ressource liée est introuvable (ex: ID de rôle inexistant)",
+                content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+        @ApiResponse(responseCode = "422", description = "Données invalides (ex: format email incorrect)",
                 content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
         @ApiResponse(responseCode = "500", description = "Erreur technique serveur",
                 content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
