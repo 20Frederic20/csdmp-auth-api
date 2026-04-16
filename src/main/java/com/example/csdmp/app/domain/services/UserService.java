@@ -72,11 +72,9 @@ public class UserService {
     }
 
     public User login(String healthId, String password) {
-        User user = this.findByHealthId(healthId);
-        if(!passwordInterface.verify(password, user.getPassword())) {
-            throw new UnauthorizedException("Identifiants non valides");
-        }
-        return  user;
+        return userRepository.findByHealthId(healthId)
+                .filter(u -> passwordInterface.verify(password, u.getPassword()))
+                .orElseThrow(() -> new UnauthorizedException("Identifiants non valides"));
     }
 
     public void delete(UUID id){
