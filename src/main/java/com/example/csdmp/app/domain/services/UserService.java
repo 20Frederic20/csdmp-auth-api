@@ -1,11 +1,11 @@
 package com.example.csdmp.app.domain.services;
 
 import com.example.csdmp.app.domain.dtos.PaginatedResult;
-import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.entities.Role;
 import com.example.csdmp.app.domain.entities.User;
 import com.example.csdmp.app.domain.exceptions.BusinessException;
 import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
+import com.example.csdmp.app.domain.exceptions.UnauthorizedException;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
 import com.example.csdmp.app.domain.repositories.UserRepository;
 import com.example.csdmp.app.domain.security.PasswordInterface;
@@ -43,9 +43,11 @@ public class UserService {
         return userRepository.findAll(page, size);
     }
 
-    public User update(UUID id, String firstName, String lastName, String email, String healthId, String password, boolean isActive){
-        List<Role> roles = List.of();
+    public User update(UUID id, String firstName, String lastName, String email, String healthId, String password, List<UUID> roleIds,  boolean isActive){
         User user = this.findById(id);
+        List<Role> roles = roleIds.stream()
+                .map(rId -> roleRepository.findById(rId).orElseThrow(() -> new EntityNotFoundException("Le role " + rId + " n'existe pas")))
+                .toList();
         User updatedUser = new User(user.getId(), firstName, lastName, email, healthId, password, roles, isActive);
         userRepository.save(updatedUser);
         return updatedUser;
@@ -67,6 +69,14 @@ public class UserService {
         return userRepository.findByHealthId(healthId).orElseThrow(
                 () -> new EntityNotFoundException("Utilisateur non trouvé avec le numéro de crate de santé : " + healthId)
         );
+    }
+
+    public User login(String healthId, String password) {
+        User user = this.findByHealthId(healthId);
+        if(!passwordInterface.verify(password, user.getPassword())) {
+            throw new UnauthorizedException("Identifiants non valides");
+        }
+        return  user;
     }
 
     public void delete(UUID id){
