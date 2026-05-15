@@ -6,11 +6,11 @@ COPY gradle ./gradle
 COPY gradlew ./
 RUN chmod +x gradlew
 COPY src ./src
-RUN ./gradlew bootJar --no-daemon
+RUN ./gradlew clean bootJar --no-daemon -i  # -i pour le mode info/debug
 
 # Runtime stage
 FROM eclipse-temurin:17-jre-alpine
-WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
+WORKDIR /deploy
+COPY --from=build /app/build/libs/csdmp-*.jar /deploy/app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/deploy/app.jar"]
