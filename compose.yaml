@@ -1,10 +1,8 @@
 services:
   postgres:
     image: 'postgres:16-alpine'
-    environment:
-      - 'POSTGRES_DB=csdmp_db2'
-      - 'POSTGRES_PASSWORD=+012345678!'
-      - 'POSTGRES_USER=postgres'
+    env_file:
+      - .env.db
     ports:
       - '5433:5432'
     volumes:
@@ -23,11 +21,8 @@ services:
       - '8080:8080'
     volumes:
       - .:/app
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/csdmp_db2
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=+012345678!
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    env_file:
+      - .env.dev
     depends_on:
       postgres:
         condition: service_healthy
