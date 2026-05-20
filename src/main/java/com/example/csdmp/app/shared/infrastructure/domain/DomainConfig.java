@@ -1,4 +1,4 @@
-package com.example.csdmp.app.infrastructure.domain;
+package com.example.csdmp.app.shared.infrastructure.domain;
 
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
