@@ -1,11 +1,14 @@
 package com.example.csdmp.app.infrastructure.persistence.repositories;
 
-import com.example.csdmp.app.domain.entities.Role;
-import com.example.csdmp.app.domain.entities.User;
-import com.example.csdmp.app.domain.security.PasswordInterface;
-import com.example.csdmp.app.infrastructure.persistence.entities.RoleEntity;
-import com.example.csdmp.app.infrastructure.persistence.entities.UserEntity;
-import com.example.csdmp.app.infrastructure.security.BCryptPasswordHasher;
+import com.example.csdmp.app.auth.domain.entities.Role;
+import com.example.csdmp.app.auth.domain.entities.User;
+import com.example.csdmp.app.auth.domain.security.PasswordInterface;
+import com.example.csdmp.app.auth.infrastructure.persistence.entities.RoleEntity;
+import com.example.csdmp.app.auth.infrastructure.persistence.repositories.JpaRoleRepository;
+import com.example.csdmp.app.auth.infrastructure.persistence.repositories.RoleRepositoryImpl;
+import com.example.csdmp.app.auth.infrastructure.persistence.repositories.UserRepositoryImpl;
+import com.example.csdmp.app.auth.infrastructure.security.BCryptPasswordHasher;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;

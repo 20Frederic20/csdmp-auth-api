@@ -1,11 +1,13 @@
 package com.example.csdmp.app.domain.services;
 
-import com.example.csdmp.app.domain.entities.Permission;
-import com.example.csdmp.app.domain.entities.Role;
-import com.example.csdmp.app.domain.exceptions.BusinessException;
-import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
-import com.example.csdmp.app.domain.repositories.PermissionRepository;
-import com.example.csdmp.app.domain.repositories.RoleRepository;
+import com.example.csdmp.app.auth.domain.entities.Permission;
+import com.example.csdmp.app.auth.domain.entities.Role;
+import com.example.csdmp.app.auth.domain.repositories.PermissionRepository;
+import com.example.csdmp.app.auth.domain.repositories.RoleRepository;
+import com.example.csdmp.app.auth.domain.services.RoleService;
+import com.example.csdmp.app.shared.domain.exceptions.BusinessException;
+import com.example.csdmp.app.shared.domain.exceptions.EntityNotFoundException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

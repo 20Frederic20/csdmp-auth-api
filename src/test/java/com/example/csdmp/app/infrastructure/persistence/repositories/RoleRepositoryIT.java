@@ -1,9 +1,13 @@
     package com.example.csdmp.app.infrastructure.persistence.repositories;
 
-    import com.example.csdmp.app.domain.entities.Permission;
-    import com.example.csdmp.app.domain.entities.Role;
-    import com.example.csdmp.app.infrastructure.persistence.entities.PermissionEntity;
-    import org.junit.jupiter.api.Test;
+    import com.example.csdmp.app.auth.domain.entities.Permission;
+import com.example.csdmp.app.auth.domain.entities.Role;
+import com.example.csdmp.app.auth.infrastructure.persistence.entities.PermissionEntity;
+import com.example.csdmp.app.auth.infrastructure.persistence.repositories.JpaPermissionRepository;
+import com.example.csdmp.app.auth.infrastructure.persistence.repositories.PermissionRepositoryImpl;
+import com.example.csdmp.app.auth.infrastructure.persistence.repositories.RoleRepositoryImpl;
+
+import org.junit.jupiter.api.Test;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
     import org.springframework.context.annotation.Import;

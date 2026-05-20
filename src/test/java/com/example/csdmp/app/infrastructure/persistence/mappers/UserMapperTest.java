@@ -1,9 +1,11 @@
 package com.example.csdmp.app.infrastructure.persistence.mappers;
 
-import com.example.csdmp.app.domain.entities.Role;
-import com.example.csdmp.app.domain.entities.User;
-import com.example.csdmp.app.infrastructure.persistence.entities.RoleEntity;
-import com.example.csdmp.app.infrastructure.persistence.entities.UserEntity;
+import com.example.csdmp.app.auth.domain.entities.Role;
+import com.example.csdmp.app.auth.domain.entities.User;
+import com.example.csdmp.app.auth.infrastructure.persistence.entities.RoleEntity;
+import com.example.csdmp.app.auth.infrastructure.persistence.entities.UserEntity;
+import com.example.csdmp.app.auth.infrastructure.persistence.mappers.UserMapper;
+
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
