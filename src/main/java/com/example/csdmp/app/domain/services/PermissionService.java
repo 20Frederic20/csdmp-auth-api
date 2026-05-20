@@ -6,7 +6,6 @@ import com.example.csdmp.app.domain.exceptions.BusinessException;
 import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 
-import java.util.List;
 import java.util.UUID;
 
 public class PermissionService {
