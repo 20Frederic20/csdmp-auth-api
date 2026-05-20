@@ -31,7 +31,7 @@ public class AuthController {
     @ApiResponse(responseCode = "201", description = "Rôle créé avec succès")
     @ApiMutationErrors
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody UserRequest request) {
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody UserRequest request) {
         AuthResponse response = authService.register(request.firstName(), request.lastName(), request.email(), request.healthId(), request.password(), request.roleIds(), request.isActive());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
