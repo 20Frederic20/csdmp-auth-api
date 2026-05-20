@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.csdmp.app.shared.domain.entities.BaseDomainEntity;
+
 public class User extends BaseDomainEntity {
     private final UUID id;
     private final String firstName;

@@ -1,4 +1,4 @@
-package com.example.csdmp.app.domain.entities;
+package com.example.csdmp.app.shared.domain.entities;
 
 import java.time.LocalDateTime;
 
