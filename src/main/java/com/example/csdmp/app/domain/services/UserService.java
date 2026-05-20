@@ -1,6 +1,5 @@
 package com.example.csdmp.app.domain.services;
 
-import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Role;
 import com.example.csdmp.app.domain.entities.User;
 import com.example.csdmp.app.domain.exceptions.BusinessException;
@@ -9,6 +8,7 @@ import com.example.csdmp.app.domain.exceptions.UnauthorizedException;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
 import com.example.csdmp.app.domain.repositories.UserRepository;
 import com.example.csdmp.app.domain.security.PasswordInterface;
+import com.example.csdmp.app.shared.domain.dtos.PaginatedResult;
 
 import java.util.List;
 import java.util.UUID;

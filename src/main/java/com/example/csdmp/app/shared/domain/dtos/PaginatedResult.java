@@ -1,4 +1,4 @@
-package com.example.csdmp.app.domain.dtos;
+package com.example.csdmp.app.shared.domain.dtos;
 
 import java.util.List;
 

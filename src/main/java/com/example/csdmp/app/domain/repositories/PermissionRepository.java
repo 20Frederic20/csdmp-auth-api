@@ -1,7 +1,7 @@
 package com.example.csdmp.app.domain.repositories;
 
-import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Permission;
+import com.example.csdmp.app.shared.domain.dtos.PaginatedResult;
 
 import java.util.Optional;
 import java.util.UUID;

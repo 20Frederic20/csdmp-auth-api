@@ -1,10 +1,10 @@
 package com.example.csdmp.app.domain.services;
 
-import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.exceptions.BusinessException;
 import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
+import com.example.csdmp.app.shared.domain.dtos.PaginatedResult;
 
 import java.util.UUID;
 

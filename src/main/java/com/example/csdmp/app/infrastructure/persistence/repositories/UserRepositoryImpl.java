@@ -1,10 +1,11 @@
 package com.example.csdmp.app.infrastructure.persistence.repositories;
 
-import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.User;
 import com.example.csdmp.app.domain.repositories.UserRepository;
 import com.example.csdmp.app.infrastructure.persistence.entities.UserEntity;
 import com.example.csdmp.app.infrastructure.persistence.mappers.UserMapper;
+import com.example.csdmp.app.shared.domain.dtos.PaginatedResult;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;

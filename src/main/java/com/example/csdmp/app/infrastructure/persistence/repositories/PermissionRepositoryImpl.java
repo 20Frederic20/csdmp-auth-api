@@ -1,10 +1,11 @@
 package com.example.csdmp.app.infrastructure.persistence.repositories;
 
-import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 import com.example.csdmp.app.infrastructure.persistence.entities.PermissionEntity;
 import com.example.csdmp.app.infrastructure.persistence.mappers.PermissionMapper;
+import com.example.csdmp.app.shared.domain.dtos.PaginatedResult;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;

@@ -2,11 +2,12 @@ package com.example.csdmp.app.interfaces.rest.controllers;
 
 import com.example.csdmp.app.domain.entities.Role;
 import com.example.csdmp.app.domain.services.RoleService;
-import com.example.csdmp.app.interfaces.rest.docs.ApiMutationErrors;
-import com.example.csdmp.app.interfaces.rest.docs.ApiQueryErrors;
 import com.example.csdmp.app.interfaces.rest.dtos.PermissionResponse;
 import com.example.csdmp.app.interfaces.rest.dtos.RoleRequest;
 import com.example.csdmp.app.interfaces.rest.dtos.RoleResponse;
+import com.example.csdmp.app.shared.interfaces.rest.docs.ApiMutationErrors;
+import com.example.csdmp.app.shared.interfaces.rest.docs.ApiQueryErrors;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

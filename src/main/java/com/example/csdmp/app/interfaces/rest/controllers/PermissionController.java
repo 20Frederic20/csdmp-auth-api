@@ -1,10 +1,11 @@
 package com.example.csdmp.app.interfaces.rest.controllers;
 
-import com.example.csdmp.app.domain.dtos.PaginatedResult;
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.services.PermissionService;
 import com.example.csdmp.app.interfaces.rest.dtos.PermissionRequest;
 import com.example.csdmp.app.interfaces.rest.dtos.PermissionResponse;
+import com.example.csdmp.app.shared.domain.dtos.PaginatedResult;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

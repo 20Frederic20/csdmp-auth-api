@@ -2,8 +2,9 @@ package com.example.csdmp.app.interfaces.rest.controllers;
 
 import com.example.csdmp.app.domain.entities.User;
 import com.example.csdmp.app.domain.services.UserService;
-import com.example.csdmp.app.interfaces.rest.docs.ApiMutationErrors;
 import com.example.csdmp.app.interfaces.rest.dtos.*;
+import com.example.csdmp.app.shared.interfaces.rest.docs.ApiMutationErrors;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.jspecify.annotations.NonNull;

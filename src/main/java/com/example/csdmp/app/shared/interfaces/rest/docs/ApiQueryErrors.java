@@ -1,4 +1,4 @@
-package com.example.csdmp.app.interfaces.rest.docs;
+package com.example.csdmp.app.shared.interfaces.rest.docs;
 
 import com.example.csdmp.app.interfaces.rest.exceptions.ErrorResponse;
 import io.swagger.v3.oas.annotations.media.Content;
