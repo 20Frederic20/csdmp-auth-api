@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.example.csdmp.app.shared.infrastructure.persistence.entities.BaseEntity;
+
 @Entity
 @Table(name = "refresh_tokens")
 public class RefreshTokenEntity extends BaseEntity {

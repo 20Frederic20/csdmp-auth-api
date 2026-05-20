@@ -1,4 +1,4 @@
-package com.example.csdmp.app.infrastructure.persistence.entities;
+package com.example.csdmp.app.shared.infrastructure.persistence.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
