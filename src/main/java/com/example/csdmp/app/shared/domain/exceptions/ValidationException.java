@@ -1,4 +1,4 @@
-package com.example.csdmp.app.domain.exceptions;
+package com.example.csdmp.app.shared.domain.exceptions;
 
 public class ValidationException extends RuntimeException {
     public ValidationException(String message) {

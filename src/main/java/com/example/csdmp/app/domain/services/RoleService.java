@@ -2,11 +2,10 @@ package com.example.csdmp.app.domain.services;
 
 import com.example.csdmp.app.domain.entities.Permission;
 import com.example.csdmp.app.domain.entities.Role;
-import com.example.csdmp.app.domain.exceptions.BusinessException;
-import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
 import com.example.csdmp.app.domain.repositories.PermissionRepository;
 import com.example.csdmp.app.domain.repositories.RoleRepository;
-
+import com.example.csdmp.app.shared.domain.exceptions.BusinessException;
+import com.example.csdmp.app.shared.domain.exceptions.EntityNotFoundException;
 
 import java.util.UUID;
 import java.util.List;

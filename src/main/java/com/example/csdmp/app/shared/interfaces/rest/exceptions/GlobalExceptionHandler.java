@@ -1,13 +1,14 @@
 package com.example.csdmp.app.shared.interfaces.rest.exceptions;
 
-import com.example.csdmp.app.domain.exceptions.BusinessException;
-import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
-import com.example.csdmp.app.domain.exceptions.UnauthorizedException;
-import com.example.csdmp.app.domain.exceptions.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.example.csdmp.app.shared.domain.exceptions.BusinessException;
+import com.example.csdmp.app.shared.domain.exceptions.EntityNotFoundException;
+import com.example.csdmp.app.shared.domain.exceptions.UnauthorizedException;
+import com.example.csdmp.app.shared.domain.exceptions.ValidationException;
 
 import java.time.LocalDateTime;
 

@@ -1,11 +1,11 @@
 package com.example.csdmp.app.domain.services;
 
 import com.example.csdmp.app.domain.entities.User;
-import com.example.csdmp.app.domain.exceptions.UnauthorizedException;
 import com.example.csdmp.app.domain.repositories.UserRepository;
 import com.example.csdmp.app.domain.security.PasswordInterface;
 import com.example.csdmp.app.domain.security.TokenInterface;
 import com.example.csdmp.app.interfaces.rest.dtos.AuthResponse;
+import com.example.csdmp.app.shared.domain.exceptions.UnauthorizedException;
 
 import java.util.List;
 import java.util.UUID;
