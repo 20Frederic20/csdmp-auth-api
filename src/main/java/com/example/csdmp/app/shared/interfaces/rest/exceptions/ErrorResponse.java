@@ -1,4 +1,4 @@
-package com.example.csdmp.app.interfaces.rest.exceptions;
+package com.example.csdmp.app.shared.interfaces.rest.exceptions;
 
 import java.time.LocalDateTime;
 

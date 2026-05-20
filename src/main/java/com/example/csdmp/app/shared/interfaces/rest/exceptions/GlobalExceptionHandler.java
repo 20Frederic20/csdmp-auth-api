@@ -1,4 +1,4 @@
-package com.example.csdmp.app.interfaces.rest.exceptions;
+package com.example.csdmp.app.shared.interfaces.rest.exceptions;
 
 import com.example.csdmp.app.domain.exceptions.BusinessException;
 import com.example.csdmp.app.domain.exceptions.EntityNotFoundException;
